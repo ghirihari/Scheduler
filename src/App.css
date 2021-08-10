@@ -1,38 +1,121 @@
+@media only screen and (max-width: 600px) {
+  .card-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background-color: #303030;
+    padding: 10px;
+    height: auto;
+    border-radius: 20px;
+    color: white;
+    width: 90%;
+  }
+}
+
+.card-1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  background-color: #303030;
+  padding: 10px 15px;
+  height: auto;
+  border-radius: 20px;
+  color: #EDEDED;
+}
+
+.card-1 .button{
+  border-radius: 10px;
+  width: 100%;
+  background: rgb(218, 0, 55,0.8);
+  font-size: x-large;
+  font-family: 'PT Sans Narrow', sans-serif;
+  padding: 1px;
+  color:#EDEDED
+}
+
+.card-1 .button:hover{
+  background: rgb(218, 0, 55,1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&display=swap');
+
+.class-title{
+  text-align: center;
+  font-size: xx-large;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+.now-tab{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  align-items: center;
+  background-color: #171717;
+}
+
+.right{
+  float:right;
+}
+
+.left{
+  float:left;
+}
+
+td,th{
+  border: none !important;
+}
+
+.weekly-table{
+  min-width: 650;
+  background-color: 'white';
+  color:'black';
+  width:'auto';
+}
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.line {
+  position: absolute;
+  border-left: 6px solid white;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bar{
+  margin: 10px 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card{
+  min-height:max-content;
+  background: #262626;
+  color: white;  
+  padding: 5px 5px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.card:hover{
+  background:#404040;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card.now:hover{
+  background-color: #00bcd4;
+} 
+
+.subject-name{
+  display: block;
+  font-size: large;
+}
+
+.today{
+  background-color:#353535;
+}
+
+.now{
+  background-color: #0096aa;
+}
+
+tr:hover{
+  background-color: #303030;
 }
