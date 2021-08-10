@@ -6,7 +6,7 @@ const openInNewTab = (url) => {
 }
 
 export default function SubjectCard(props) {
-    console.log(props.subject)
+    // console.log(props.subject)
     let nowClass = (props.now===true) ? 'now' : '';  
     let type = props.subject.type==="lab"?'💻':'📚';
     return (

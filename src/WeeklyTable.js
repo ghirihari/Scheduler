@@ -45,7 +45,7 @@ const currentPeriod = (schedule, today) => {
                 let endMinute = end.hour*60 + end.minute;
                 //Current hour is between start and end hours
                 // current Hour is less than end hour
-                console.log(currentMinute,startMinute,endMinute)                    
+                // console.log(currentMinute,startMinute,endMinute)                    
                 if(currentMinute>=startMinute && currentMinute<=endMinute){
                     current = item;
                     return false;
@@ -60,7 +60,7 @@ const currentPeriod = (schedule, today) => {
 const WeeklyTable = () => {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
     const today = days[(new Date().getDay())-1];
-    console.log(today)
+    // console.log(today)
     const classes = useStyles();
     const time = [
       {start:'9:00',end:'9:50'},

@@ -4,6 +4,26 @@ import Book from './assets/books.png'
 import Laptop from './assets/laptop.png'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+const ProgressBar = (props) => {
+    var thedate = new Date(); 
+    var hour = (thedate.getHours())*60; 
+    var minute = thedate.getMinutes();
+    var currentMinute = hour+minute;
+
+    let start = {hour: parseInt(props.time.start.substring(0, props.time.start.indexOf(':'))), minute: parseInt(props.time.start.substring(props.time.start.indexOf(':')+1,props.time.length))};
+    let end = {hour: parseInt(props.time.end.substring(0, props.time.end.indexOf(':'))), minute: parseInt(props.time.end.substring(props.time.end.indexOf(':')+1,props.time.length))};
+    let startMinute = start.hour*60 + start.minute;
+    let endMinute = end.hour*60 + end.minute;
+    var progress;
+    if(currentMinute>endMinute)progress=100;
+    else progress = ((currentMinute-startMinute)*(100/(endMinute-startMinute)))
+
+    return(
+        <div className="bar">
+            <LinearProgress variant="determinate" color="secondary" value={progress} />
+        </div>
+    )
+}
 const currentPeriod = (schedule, today) => {
     var thedate = new Date(); 
     var hour = (thedate.getHours())*60; 
@@ -49,8 +69,8 @@ const Now = () => {
     ]
 
     const subjects = {
-        '0':{name:'Placement'},
-        '1':{name:'SCH'},
+        '0':{name:'Placement',faculty:'Nil'},
+        '1':{name:'SCH',faculty:'Nil'},
         '2':{name:'TWM',faculty:'Dr.M.Umarani'},
         '15MSS91':{name:'Information Security', type:'class', meet:'https://meet.google.com/lookup/cgecmskjvs?authuser=4',faculty:'Dr.P.Aruna'},
         '15MSS92':{name:'Professional Ethics',type:'class', meet:'https://meet.google.com/rgy-ipzm-fxd?authuser=4',faculty:'Dr.A.Saravanan'},
@@ -67,14 +87,32 @@ const Now = () => {
 
     let current = currArr[0];
     let progress = Math.floor(currArr[1]);
-    let titleIcon;
-    if(current)titleIcon = subjects[current.id].type==="lab"?Laptop:Book;
-
-    let start = parseInt(current.time.start.substring(0, current.time.start.indexOf(':')))%12+current.time.start.substring(current.time.start.indexOf(':'),current.time.start.length)
-    let end = parseInt(current.time.end.substring(0, current.time.end.indexOf(':')))%12+current.time.end.substring(current.time.end.indexOf(':'),current.time.end.length)
+    
     return (
         <div className="now-tab">
-            <div className="card-1">
+            {schedule.map(item=>{
+                if(item.day===today){
+                    return item.period.map(item=>{
+                        let titleIcon = subjects[item.id].type==="lab"?Laptop:Book;
+                        let start = parseInt(item.time.start.substring(0, item.time.start.indexOf(':')))%12+item.time.start.substring(item.time.start.indexOf(':'),item.time.start.length)
+                        let end = parseInt(item.time.end.substring(0, item.time.end.indexOf(':')))%12+item.time.end.substring(item.time.end.indexOf(':'),item.time.end.length)
+                        
+                        return(
+                            <div className="card-1" key={item.id}>
+                                <div style={{textAlign:"center"}}><img alt={titleIcon} src={titleIcon} style={{width:'50px'}}/></div>
+                                <div className="title-container">
+                                    <label className="class-title">{subjects[item.id].name}</label>
+                                </div>
+                                <ProgressBar time={item.time}/>
+                                <h6>⏰ {today}, {start} - {end}</h6>
+                                <h6>👨‍🏫 {subjects[item.id].faculty}</h6>
+                                <Button className={item===current?'button-current':'button'} onClick={()=>openInNewTab(subjects[item.id].meet)} variant="contained">Join</Button>
+                            </div>                             
+                        )
+                    })
+                }
+            })}
+            {/* <div className="card-1">
                 <div style={{textAlign:"center"}}><img alt={titleIcon} src={titleIcon}/></div>
                 <label className="class-title">{subjects[current.id].name}</label>
                 <div className="bar">
@@ -83,7 +121,7 @@ const Now = () => {
                 <h6>⏰ {today}, {start} - {end}</h6>
                 <h6>👨‍🏫 {subjects[current.id].faculty}</h6>
                 <Button className="button" onClick={()=>openInNewTab(subjects[current.id].meet)} variant="contained" color="primary">Join</Button>
-            </div>
+            </div> */}
         </div>
     )
 }

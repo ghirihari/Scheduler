@@ -1,31 +1,88 @@
+body{
+  background-color:black;
+}
+
+.now-tab{
+  flex-grow: 1;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #171717;
+}
+
 @media only screen and (max-width: 600px) {
+  /* Mobile */
   .card-1{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: left;
-    background-color: #303030;
-    padding: 10px;
-    height: auto;
-    border-radius: 20px;
-    color: white;
     width: 90%;
+    margin: 10px 0px;
   }
+  .now-tab{
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  /* Desktop */
+  .now-tab{
+    flex-direction: row;
+  }
+  .card-1{
+    margin: 0px 10px;
+    min-height: 300px;
+  }
+  .title-container{
+    min-height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+}
+
+.title-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.list{
+  background-color: #252525;
+  color: #EDEDED;
+  height: 100vh;
+}
+.index-tab{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #171717;
 }
 
 .card-1{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; 
   text-align: left;
   background-color: #303030;
   padding: 10px 15px;
   height: auto;
   border-radius: 20px;
   color: #EDEDED;
+  min-width: 250px;
 }
 
 .card-1 .button{
+  border-radius: 10px;
+  width: 100%;
+  background-color: #404040;
+  font-size: x-large;
+  font-family: 'PT Sans Narrow', sans-serif;
+  padding: 1px;
+  color:#EDEDED
+}
+
+.card-1 .button-current{
   border-radius: 10px;
   width: 100%;
   background: rgb(218, 0, 55,0.8);
@@ -35,8 +92,12 @@
   color:#EDEDED
 }
 
-.card-1 .button:hover{
+.card-1 .button-current:hover{
   background: rgb(218, 0, 55,1);
+}
+
+.card-1 .button:hover{
+  background: #505050;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&display=swap');
@@ -45,14 +106,6 @@
   text-align: center;
   font-size: xx-large;
   font-family: 'PT Sans Narrow', sans-serif;
-}
-.now-tab{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100vh;
-  align-items: center;
-  background-color: #171717;
 }
 
 .right{
