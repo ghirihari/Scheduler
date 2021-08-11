@@ -2,9 +2,52 @@ body{
   background-color:black;
 }
 
-.now-tab{
-  flex-grow: 1;
+.day-container{
   display: flex;
+  align-items: center;
+  padding: 0px 15px;
+  width: 100%;
+  flex-direction: row;
+}
+.next-buttons{
+  background-color:#303030 !important;
+}
+
+.day-label{
+  min-width: 250px;
+  background-color: #303030;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.now-container{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nowCard{
+  border: 5px solid rgb(218, 0, 55,1);
+}
+
+.dropdown{
+  background: #303030;
+  width: 50%;
+  align-self: center;
+  margin: 10px;
+  height: 50px;
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+  font-size: larger;
+}
+.now-tab{
+  /* flex-grow: 1; */
+  display: flex;
+  width: 100%;
   /* flex-direction: column; */
   justify-content: flex-start;
   align-items: center;
@@ -20,12 +63,17 @@ body{
   .now-tab{
     flex-direction: column;
   }
+  .day-container{
+    justify-content: space-between;
+    margin-top: 10px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
   /* Desktop */
   .now-tab{
     flex-direction: row;
+    justify-content: center;
   }
   .card-1{
     margin: 0px 10px;
@@ -37,6 +85,14 @@ body{
     align-items:center;
     justify-content:center;
   }
+  .day-container{
+    justify-content: center;
+    margin: 10px;
+  }
+  .next-buttons-container{
+    margin:10px;
+  }
+  
 }
 
 .title-container{

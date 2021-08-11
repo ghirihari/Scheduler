@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -14,13 +13,10 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import EventNoteIcon from '@material-ui/icons/EventNote';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 // Components
 import Now from './Today'
-import WeeklyTable from './WeeklyTable';
 
 
 const useStyles = makeStyles({
@@ -52,6 +48,8 @@ export default function SwipeableTemporaryDrawer() {
         return(<EventNoteIcon color="secondary"/>)
       case "Settings":
         return(<SettingsIcon color="secondary"/>)
+      default:
+        return(<></>)
     }
   }
   const menus = [
@@ -74,14 +72,14 @@ export default function SwipeableTemporaryDrawer() {
   );
 
   return (
-    <div style={{display:'flex', flexDirection:'column',height:'100vh'}}>
+    <div style={{display:'flex', flexDirection:'column',height:'100vh', backgroundColor:'#171717'}}>
         <React.Fragment key={'left'}>
           <AppBar position="fixed" style={{backgroundColor:"#252525"}}>
             <Toolbar>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" style={{textAlign:'center', width:'100%'}}>Mystic Scheduler</Typography>
+              <Typography variant="h6" style={{textAlign:'center', width:'100%'}}>Mystic Mac</Typography>
             </Toolbar>
           </AppBar>
           <Toolbar></Toolbar>
@@ -93,7 +91,7 @@ export default function SwipeableTemporaryDrawer() {
           >
             {list('left')}
           </SwipeableDrawer>
-          {menu==='Home'?<Now/>:<WeeklyTable/>}
+          {menu==='Home'?<Now/>:<></>}
         </React.Fragment>
     </div>
   );
