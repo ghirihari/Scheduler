@@ -34,6 +34,7 @@ const Now = () => {
     }
     const [day, setDay] = useState((new Date().getDay())-1)
     const today = days[day];
+  
     return (
         <div className="now-container">
             <div className="day-container">

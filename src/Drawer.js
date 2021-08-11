@@ -14,9 +14,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import SettingsIcon from '@material-ui/icons/Settings';
-
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 // Components
 import Now from './Today'
+import AddSubjects from './AddSubjects'
 
 
 const useStyles = makeStyles({
@@ -44,8 +45,8 @@ export default function SwipeableTemporaryDrawer() {
     switch(name){
       case "Home":
         return(<HomeIcon color="secondary"/>)
-      case "Schedule":
-        return(<EventNoteIcon color="secondary"/>)
+      case "Subjects":
+        return(<MenuBookIcon color="secondary"/>)
       case "Settings":
         return(<SettingsIcon color="secondary"/>)
       default:
@@ -54,7 +55,7 @@ export default function SwipeableTemporaryDrawer() {
   }
   const menus = [
     {name:"Home"},
-    {name:"Schedule"},
+    {name:"Subjects"},
     {name:"Settings"},
     
   ]
@@ -91,7 +92,7 @@ export default function SwipeableTemporaryDrawer() {
           >
             {list('left')}
           </SwipeableDrawer>
-          {menu==='Home'?<Now/>:<></>}
+          {menu==='Home'?<Now/>:<AddSubjects/>}
         </React.Fragment>
     </div>
   );

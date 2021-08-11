@@ -2,6 +2,11 @@ body{
   background-color:black;
 }
 
+.add-dialog{
+  text-align: center;
+  color: white;
+  background-color: #303030;
+}
 .day-container{
   display: flex;
   align-items: center;
@@ -54,13 +59,29 @@ body{
   background-color: #171717;
 }
 
+.add-tab{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #171717;
+  flex-wrap: wrap;
+}
+
 @media only screen and (max-width: 600px) {
   /* Mobile */
   .card-1{
     width: 90%;
     margin: 10px 0px;
   }
+  .add-card{
+    width: 90%;
+    margin: 10px 0px;
+  }
   .now-tab{
+    flex-direction: column;
+  }
+  .add-tab{
     flex-direction: column;
   }
   .day-container{
@@ -75,15 +96,18 @@ body{
     flex-direction: row;
     justify-content: center;
   }
+  .add-tab{
+    flex-direction: row;
+    justify-content: center;
+    overflow-x: hidden;
+  }
   .card-1{
     margin: 0px 10px;
     min-height: 300px;
   }
-  .title-container{
-    min-height:100px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  .add-card{
+    margin: 10px 10px;
+    flex-grow: 1;
   }
   .day-container{
     justify-content: center;
@@ -153,6 +177,46 @@ body{
 }
 
 .card-1 .button:hover{
+  background: #505050;
+}
+
+.add-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch; 
+  background-color: #303030;
+  padding: 10px;
+  height: auto;
+  border-radius: 20px;
+  color: #EDEDED;
+  min-width: 250px;
+}
+
+.subject-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  text-align: center;
+  background-color: #303030;
+  /* padding: 10px 5px; */
+  height: auto;
+  border-radius: 20px;
+  color: #EDEDED;
+  min-width: 250px;
+}
+
+.subject-card .button{
+  border-radius: 10px;
+  width: 100%;
+  background-color: #404040;
+  font-size: x-large;
+  font-family: 'PT Sans Narrow', sans-serif;
+  padding: 1px;
+  color:#EDEDED
+}
+
+.subject-card .button:hover{
   background: #505050;
 }
 
