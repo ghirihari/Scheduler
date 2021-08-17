@@ -12,7 +12,7 @@ const DayNavigator = (props) => {
                 </IconButton>
             </div>
             <div>
-                <label className="day-label">{props.today}</label>
+                <label className="day-label title">{props.today}</label>
             </div>
             <div className="next-buttons-container">
                 <IconButton size="small" className="next-buttons" onClick={()=>props.setDay(day=>(day+1)%5)}>

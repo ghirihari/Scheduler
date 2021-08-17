@@ -1,4 +1,6 @@
 import React from 'react';
+
+//Material UI 
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -7,29 +9,23 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+
 // Icons
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
-import EventNoteIcon from '@material-ui/icons/EventNote';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
-// Components
-import Now from './Today'
-import AddSubjects from './AddSubjects'
 
+// Components
+import Menu from './Menu';
 
 const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
+  list: {width: 250},
+  fullList: {width: 'auto'},
 });
 
-export default function SwipeableTemporaryDrawer() {
+export default function Drawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({left: false});
   const [menu, setMenu] = React.useState('Home');
@@ -80,7 +76,7 @@ export default function SwipeableTemporaryDrawer() {
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" style={{textAlign:'center', width:'100%'}}>Mystic Mac</Typography>
+              <div className="title">⚡Ghost Of Uchiha⚡</div>
             </Toolbar>
           </AppBar>
           <Toolbar></Toolbar>
@@ -92,7 +88,8 @@ export default function SwipeableTemporaryDrawer() {
           >
             {list('left')}
           </SwipeableDrawer>
-          {menu==='Home'?<Now/>:<AddSubjects/>}
+          <Menu menu={menu}/>
+          {/* {menu==='Home'?<Now/>:<AddSubjects/>} */}
         </React.Fragment>
     </div>
   );
