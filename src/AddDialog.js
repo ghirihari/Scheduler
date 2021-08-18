@@ -35,7 +35,7 @@ const AddDialog = () => {
 
     const addSub = () => {
         setOpen(false);
-        data.setSubjects(subjects => ({...subjects,[Id]:{name:Name,faculty:Faculty,meet:Link}}));  
+        data.appendSubjects(Id,Name,Faculty,Link,Type);  
     }  
 
     return (

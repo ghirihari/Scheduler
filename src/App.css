@@ -4,6 +4,15 @@ body{
   background-color:black;
 }
 
+.edit-period-btn{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: rgb(218, 0, 55,1);
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 .title{
   font-family: 'PT Sans Narrow', sans-serif !important;
   font-size: x-large;
@@ -55,6 +64,7 @@ body{
 }
 .nowCard{
   border: 5px solid rgb(218, 0, 55,1);
+  margin-top: 5px;
 }
 
 .dropdown{
@@ -69,6 +79,8 @@ body{
   font-size: larger;
 }
 .now-tab{
+  margin-top: 10px;
+  flex-wrap: wrap;
   /* flex-grow: 1; */
   display: flex;
   width: 100%;
@@ -92,6 +104,10 @@ body{
   .card-1{
     width: 90%;
     margin: 10px 0px;
+  }
+  .card-period{
+    width: 95%;
+    margin: 7px 0px;
   }
   .add-card{
     width: 90%;
@@ -121,8 +137,12 @@ body{
     overflow-x: hidden;
   }
   .card-1{
-    margin: 0px 10px;
+    margin: 10px;
     min-height: 300px;
+  }
+  .card-period{
+    margin: 10px;
+    /* min-height: 300px; */
   }
   .add-card{
     margin: 10px 10px;
@@ -156,6 +176,19 @@ body{
   height: 100vh;
   align-items: center;
   background-color: #171717;
+}
+
+.card-period{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  text-align: left;
+  background-color: #303030;
+  padding: 10px 15px;
+  height: auto;
+  border-radius: 20px;
+  color: #EDEDED;
+  min-width: 250px;
 }
 
 .card-1{
@@ -248,6 +281,12 @@ body{
 .class-title{
   text-align: center;
   font-size: xx-large;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.period-title{
+  text-align: center;
+  font-size: x-large;
   font-family: 'PT Sans Narrow', sans-serif;
 }
 

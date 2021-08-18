@@ -35,8 +35,8 @@ const EditDialog = (props) => {
     };
 
     const addSub = () => {
-        handleClose();
-        data.setSubjects(subjects => ({...subjects,[Id]:{name:Name,faculty:Faculty,meet:Link,type:Type}}));  
+        setOpen(false);
+        data.appendSubjects(Id,Name,Faculty,Link,Type);  
     }  
 
     const removeFromSchedule = (Id) => {

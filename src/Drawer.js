@@ -16,6 +16,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import EventNoteIcon from '@material-ui/icons/EventNote';
 
 // Components
 import Menu from './Menu';
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
 export default function Drawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({left: false});
-  const [menu, setMenu] = React.useState('Home');
+  const [menu, setMenu] = React.useState('Schedule');
   
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -45,13 +46,16 @@ export default function Drawer() {
         return(<MenuBookIcon color="secondary"/>)
       case "Settings":
         return(<SettingsIcon color="secondary"/>)
-      default:
+      case "Schedule":
+          return(<EventNoteIcon color="secondary"/>)  
+        default:
         return(<></>)
     }
   }
   const menus = [
     {name:"Home"},
     {name:"Subjects"},
+    {name:"Schedule"},
     {name:"Settings"},
     
   ]
