@@ -29,8 +29,8 @@ const EditPeriod = (props) => {
         minutes:parseInt(props.item.time.end.slice(props.item.time.end.indexOf(':')+1,props.item.time.end.length))
     }
 
-    const [Name, setName] = useState(subjects[props.item.id].name)
     const [Id, setId] = useState(props.item.id)
+    const Number = props.item.no;
     const [StartTime, setStartTime] = useState(new Date(2020,1,1,start.hours,start.minutes,0))
     const [EndTime, setEndTime] = useState(new Date(2020,1,1,end.hours,end.minutes,0))
 
@@ -42,6 +42,25 @@ const EditPeriod = (props) => {
         props.setEdit(false);
         setOpen(false);
     };
+
+    const editPeriod = () => {
+        let start = StartTime.getHours()+":"+StartTime.getMinutes();
+        let end = EndTime.getHours()+":"+EndTime.getMinutes();
+
+        const old = JSON.parse(JSON.stringify(data.Schedule))
+        old[props.day].period = old[props.day].period.filter(item=>item.no!==Number)
+        old[props.day].period.push({no:old[props.day].period.length+1,id:Id,time:{start:start,end:end}})
+        data.setSchedule(old)
+        handleClose();
+    }
+
+    const deletePeriod = () => {
+        const old = JSON.parse(JSON.stringify(data.Schedule))
+        old[props.day].period = old[props.day].period.filter(item=>item.no!==Number)
+        data.setSchedule(old)
+        handleClose();
+
+    }
     return (
         <div className={'edit-period-btn'}>
             {props.edit===true &&
@@ -52,7 +71,14 @@ const EditPeriod = (props) => {
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                 <DialogTitle className="add-dialog" onClose={handleClose}>Edit Subject</DialogTitle>
                 <DialogContent dividers className="add-dialog">
-                <Autocomplete options={Object.entries(subjects)} getOptionLabel={(item) => item[1].name} fullWidth renderInput={(params) => <TextField {...params} color="secondary" label="Subject" InputProps={{...params.InputProps, style:{ color: '#fff'}}} InputLabelProps={{style: { color: '#fff' }}}/>}/>
+                <Autocomplete
+                    onChange={(e,v)=> setId(v[0])} 
+                    value={[Id,subjects[Id]]} 
+                    options={Object.entries(subjects)} 
+                    getOptionSelected={(option, value) => option[0] === value[0]}
+                    getOptionLabel={(item) => item[1].name} 
+                    renderInput={(params) => <TextField {...params} color="secondary" label="Subject" InputProps={{...params.InputProps, style:{ color: '#fff'}}} InputLabelProps={{style: { color: '#fff' }}}
+                    fullWidth/>}/>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardTimePicker value={StartTime} onChange={(time)=>setStartTime(time)} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" fullWidth  label="Start Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
                         <KeyboardTimePicker value={EndTime} onChange={(time)=>setEndTime(time)} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" fullWidth  label="End Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
@@ -60,8 +86,8 @@ const EditPeriod = (props) => {
                 </DialogContent>
                 <DialogActions className="add-dialog">
                     <Button onClick={handleClose} style={{color:'white'}}>Cancel</Button>
-                    <Button color="secondary">Delete</Button>
-                    <Button variant="contained" color="secondary">Save changes</Button>
+                    <Button onClick={deletePeriod} color="secondary">Delete</Button>
+                    <Button onClick={editPeriod} variant="contained" color="secondary" >Save changes</Button>
                 </DialogActions>
             </Dialog>
         </div>

@@ -39,7 +39,11 @@ const AddPeriodDialog = (props) => {
 
         var startStr = start.getHours()+':'+start.getMinutes();
         var endStr = end.getHours()+':'+end.getMinutes();
-        data.setSchedule(props.day,Id,startStr,endStr)
+
+        const old = JSON.parse(JSON.stringify(data.Schedule))
+        old[props.day].period.push({no:old[props.day].period.length+1, id:Id,time:{start:startStr,end:endStr}})
+        data.setSchedule(old)
+
         setOpen(false);
     }
 
@@ -52,7 +56,12 @@ const AddPeriodDialog = (props) => {
                 <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                     <DialogTitle className="add-dialog" onClose={handleClose}>Add Period</DialogTitle>
                     <DialogContent dividers className="add-dialog">
-                    <Autocomplete options={Object.entries(subjects)} getOptionLabel={(item) => item[1].name} fullWidth renderInput={(params) => <TextField {...params} color="secondary" label="Subject" InputProps={{...params.InputProps, style:{ color: '#fff'}}} InputLabelProps={{style: { color: '#fff' }}}/>}/>
+                    <Autocomplete 
+                        onChange={(e,v)=> setId(v[0])} 
+                        options={Object.entries(subjects)} 
+                        getOptionSelected={(option, value) => option[0] === value[0]}
+                        getOptionLabel={(item) => item[1].name} fullWidth 
+                        renderInput={(params) => <TextField {...params} color="secondary" label="Subject" InputProps={{...params.InputProps, style:{ color: '#fff'}}} InputLabelProps={{style: { color: '#fff' }}}/>}/>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                           <KeyboardTimePicker value={StartTime} onChange={(time)=>setStartTime(time)} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" fullWidth  label="Start Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
                           <KeyboardTimePicker value={EndTime} onChange={(time)=>setEndTime(time)} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" fullWidth  label="End Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>

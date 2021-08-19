@@ -20,7 +20,7 @@ export default class App extends React.Component {
   }
   
   resetLocalData = () => {
-    const _days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday',]
+    const _days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday']
     const _subjects = {
         '0':{name:'Placement',faculty:'Nil'},
         '1':{name:'SCH',faculty:'Nil'},
@@ -35,11 +35,11 @@ export default class App extends React.Component {
         '15MSSL08':{name:'Image Processing Lab',type:'lab', meet:'https://meet.google.com/lookup/crolo2dqdw',faculty:'Ms.V.Shanthi'},
     }  
     const _schedule = [
-      {day:'Monday',period:[{id:'15MSS91', time:{start:'9:00',end:'10:45'}},{id:'15MSSE27', time:{start:'11:00',end:'12:45'}},{id:'15MSS93', time:{start:'14:00',end:'16:45'}}] },
-      {day:'Tuesday',period:[{id:'15MSS92', time:{start:'9:00',end:'9:50'}},{id:'15MSSL08', time:{start:'9:55',end:'12:45'}},{id:'15MSSE01', time:{start:'14:00',end:'14:50'}},{id:'15MSSE38', time:{start:'14:55',end:'15:45'}},{id:'1',time:{start:'15:55',end:'16:45'}}] },
-      {day:'Wednesday',period:[{id:'15MSSE27', time:{start:'9:00',end:'9:50'}},{id:'15MSS91', time:{start:'9:55',end:'10:45'}},{id:'15MSSL08', time:{start:'11:00',end:'12:45'}}, {id:'15MSSL15', time:{start:'14:00',end:'16:45'}}] },
-      {day:'Thursday',period:[{id:'15MSSE01', time:{start:'9:00',end:'10:45'}},{id:'15MSSL15', time:{start:'11:00',end:'12:45'}}, {id:'0',time:{start:'14:00',end:'16:45'}}] },
-      {day:'Friday',period:[{id:'15MSSE38', time:{start:'9:00',end:'10:45'}},{id:'15MSS93', time:{start:'11:00',end:'12:45'}},{id:'15MSS92', time:{start:'14:00',end:'15:45'}},{id:'2',time:{start:'15:55',end:'16:45'}}] }, 
+      {day:'Monday',period:[{no:1,id:'15MSS91', time:{start:'9:00',end:'10:45'}},{no:2,id:'15MSSE27', time:{start:'11:00',end:'12:45'}},{no:3,id:'15MSS93', time:{start:'14:00',end:'16:45'}}] },
+      {day:'Tuesday',period:[{no:1,id:'15MSS92', time:{start:'9:00',end:'9:50'}},{no:2,id:'15MSSL08', time:{start:'9:55',end:'12:45'}},{no:3,id:'15MSSE01', time:{start:'14:00',end:'14:50'}},{no:4,id:'15MSSE38', time:{start:'14:55',end:'15:45'}},{no:5,id:'1',time:{start:'15:55',end:'16:45'}}] },
+      {day:'Wednesday',period:[{no:1,id:'15MSSE27', time:{start:'9:00',end:'9:50'}},{no:2,id:'15MSS91', time:{start:'9:55',end:'10:45'}},{no:3,id:'15MSSL08', time:{start:'11:00',end:'12:45'}}, {no:4,id:'15MSSL15', time:{start:'14:00',end:'16:45'}}] },
+      {day:'Thursday',period:[{no:1,id:'15MSSE01', time:{start:'9:00',end:'10:45'}},{no:2,id:'15MSSL15', time:{start:'11:00',end:'12:45'}}, {no:3,id:'0',time:{start:'14:00',end:'16:45'}}] },
+      {day:'Friday',period:[{no:1,id:'15MSSE38', time:{start:'9:00',end:'10:45'}},{no:2,id:'15MSS93', time:{start:'11:00',end:'12:45'}},{no:3,id:'15MSS92', time:{start:'14:00',end:'15:45'}},{no:4,id:'2',time:{start:'15:55',end:'16:45'}}] }, 
     ]
     const dataa = {Day:_days, Subject:_subjects, Schedule:_schedule}
     localStorage.data = JSON.stringify(dataa)
@@ -63,10 +63,29 @@ export default class App extends React.Component {
       })
     )
   }
-  setSchedule = (Day,Id,StartTime,EndTime) => {
+
+  // setSchedule = (Day,Id,StartTime,EndTime) => {
+  //   const old = JSON.parse(JSON.stringify(this.state.schedule))
+  //   old[Day].period.push({id:Id,time:{start:StartTime,end:EndTime}})
+  //   this.setState({schedule:old})
+  // }
+
+  setSchedule = (data) =>{
+    this.setState({schedule:data})
+  }
+
+  updateSchedule = (Day,Id,StartTime,EndTime) => {
+    // console.log(Day,Id,StartTime,EndTime)
     const old = JSON.parse(JSON.stringify(this.state.schedule))
     old[Day].period.push({id:Id,time:{start:StartTime,end:EndTime}})
     this.setState({schedule:old})
+  }
+
+  deletePeriod = (Day,Id,StartTime,EndTime) => {
+    console.log(Day,Id,StartTime,EndTime)
+    // const old = JSON.parse(JSON.stringify(this.state.schedule))
+    // old[Day].period.push({id:Id,time:{start:StartTime,end:EndTime}})
+    // this.setState({schedule:old})
   }
 
   componentDidUpdate = (prevProps, prevState) =>{
@@ -78,6 +97,7 @@ export default class App extends React.Component {
   }
 
   render(){
+    this.resetLocalData();
     let data = {
       Day:this.state.day, 
       Subject:this.state.subjects, 

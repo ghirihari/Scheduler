@@ -21,7 +21,7 @@ const Schedule = () => {
                 {schedule.map(item=>{
                     if(item.day===selectedDay){
                         return item.period.map(item=>{
-                            return <PeriodCard item={item} day={selectedDay} key={item.id}/>
+                            return <PeriodCard item={item} day={day} key={item.id}/>
                         })
                     }
                     return null

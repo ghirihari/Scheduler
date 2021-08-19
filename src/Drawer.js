@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 export default function Drawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({left: false});
-  const [menu, setMenu] = React.useState('Schedule');
+  const [menu, setMenu] = React.useState('Home');
   
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
