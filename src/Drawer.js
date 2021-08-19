@@ -12,11 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 
 // Icons
-import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
-import SettingsIcon from '@material-ui/icons/Settings';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import EventNoteIcon from '@material-ui/icons/EventNote';
 
 // Components
 import Menu from './Menu';
@@ -41,14 +37,15 @@ export default function Drawer() {
   const getIcons = (name) => {
     switch(name){
       case "Home":
-        return(<HomeIcon color="secondary"/>)
+        return(<label>🏠</label>)
       case "Subjects":
-        return(<MenuBookIcon color="secondary"/>)
-      case "Settings":
-        return(<SettingsIcon color="secondary"/>)
+        return(<label>📚</label>)
       case "Schedule":
-          return(<EventNoteIcon color="secondary"/>)  
-        default:
+          return(<label>📅</label>)  
+      case "Settings":
+        return(<label>⚙️</label>)
+    
+          default:
         return(<></>)
     }
   }
@@ -64,8 +61,8 @@ export default function Drawer() {
       <List className={classes.list}>
         {menus.map((item) => (
           <ListItem onClick={()=> setMenu(item.name)}button key={item.name}>
-            <ListItemIcon>{getIcons(item.name)}</ListItemIcon>
-            <ListItemText primary={item.name} />
+            <ListItemIcon className="sidebar-icons">{getIcons(item.name)}</ListItemIcon>
+            <ListItemText primary={<label className="sidebar-text">{item.name}</label>} />
           </ListItem>
         ))}
       </List>
@@ -93,7 +90,6 @@ export default function Drawer() {
             {list('left')}
           </SwipeableDrawer>
           <Menu menu={menu}/>
-          {/* {menu==='Home'?<Now/>:<AddSubjects/>} */}
         </React.Fragment>
     </div>
   );

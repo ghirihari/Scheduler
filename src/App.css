@@ -26,8 +26,22 @@ body{
 
 .edit-btn{
   position: absolute;
-  right:0px;
+  right: -10px;
+  top: -10px;
+  background-color: rgb(218, 0, 55,1);
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
 
+.sidebar-icons{
+  font-size: x-large;
+  justify-content:center;
+  color:white !important;
+}
+
+.sidebar-text{
+  font-size: x-large;
+  font-family: 'PT Sans Narrow', sans-serif;
 }
 
 .add-dialog{
@@ -97,6 +111,10 @@ body{
   align-items: center;
   background-color: #171717;
   flex-wrap: wrap;
+}
+
+.underline{
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 600px) {

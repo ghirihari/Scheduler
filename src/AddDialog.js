@@ -16,10 +16,10 @@ import Button from '@material-ui/core/Button';
 // Icons
 import AddIcon from '@material-ui/icons/Add';
 
-const AddDialog = () => {
+const AddDialog = (props) => {
     const [open, setOpen] = useState(false);
     const [Name, setName] = useState('')
-    const [Id, setId] = useState('')
+    const [Id, setId] = useState(props.length)
     const [Faculty, setFaculty] = useState('')
     const [Link, setLink] = useState('')
     const [Type, setType] = useState('class')
@@ -51,10 +51,10 @@ const AddDialog = () => {
                             <FormControlLabel style={{color:'white'}} value="class" control={<Radio color="secondary"/>} label="Class" />
                             <FormControlLabel style={{color:'white'}} value="lab" control={<Radio color="secondary" />} label="Lab" />
                         </RadioGroup>
-                        <TextField color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="dense" label="Subject Name" fullWidth onChange={(e)=>setName(e.target.value)} />
-                        <TextField color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="dense" label="Subject ID" fullWidth onChange={(e)=>setId(e.target.value)}/>
-                        <TextField color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="dense" label="Faculty" fullWidth onChange={(e)=>setFaculty(e.target.value)}/>
-                        <TextField color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="dense" label="Meet Link" fullWidth onChange={(e)=>setLink(e.target.value)}/>
+                        <TextField value={Name} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" label="Subject Name" fullWidth onChange={(e)=>setName(e.target.value)} />
+                        <TextField value={Id} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" label="Subject ID" fullWidth onChange={(e)=>setId(e.target.value)}/>
+                        <TextField value={Faculty} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" label="Faculty" fullWidth onChange={(e)=>setFaculty(e.target.value)}/>
+                        <TextField value={Link} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" label="Meet Link" fullWidth onChange={(e)=>setLink(e.target.value)}/>
                     </DialogContent>
                     <DialogActions className="add-dialog">
                         <Button onClick={handleClose} style={{color:'white'}}>Cancel</Button>

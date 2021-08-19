@@ -61,7 +61,7 @@ const Now = () => {
     return (
         <div className="now-container">
             <div className="day-container">
-                <DayNavigator today={selectedDay} setDay={setDay}/>
+                <DayNavigator today={selectedDay} setDay={setDay} currDay={day}/>
             </div>
             <div className="now-tab">
                 {schedule.map(item=>{

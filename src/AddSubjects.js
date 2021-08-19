@@ -28,7 +28,6 @@ const Subjects = (props) => {
                     <h6>👨‍🏫 {props.data[1].faculty}</h6>
                     <h6>🆔 {props.data[0]}</h6>
                     <div className="btn-group">
-                        <Button className={'button'} variant="contained">Classroom</Button>
                         <Button className={'button'} variant="contained">Meet</Button>
                     </div>
                 </div>         
@@ -37,7 +36,7 @@ const Subjects = (props) => {
     }
     else{
         return(
-            <AddDialog/>
+            <AddDialog length={props.length}/>
         )
     }
 }
@@ -48,7 +47,7 @@ const AddSubjects = () => {
   
     return (
             <div className="add-tab">
-                <Subjects/>
+                <Subjects length={Object.entries(subjects).length}/>
                 {Object.entries(subjects).map(data=><Subjects key={data} data={data}/>)}                
             </div>
     )

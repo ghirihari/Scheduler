@@ -4,6 +4,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const DayNavigator = (props) => {
+    const today = (new Date().getDay())-1;
+
     const navigate = (direction) => {
         if(direction==='backward'){
             props.setDay(day=>{
@@ -23,7 +25,7 @@ const DayNavigator = (props) => {
                 </IconButton>
             </div>
             <div>
-                <label className="day-label title">{props.today}</label>
+                <label className="day-label title">{props.today}{props.currDay===today && <span>🎯</span>}</label>
             </div>
             <div className="next-buttons-container">
                 <IconButton size="small" className="next-buttons" onClick={navigate}>
