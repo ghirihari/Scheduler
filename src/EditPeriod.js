@@ -1,5 +1,6 @@
 import React,{useState,useContext} from 'react'
 import DataContext from './DataContext';
+import ThemeContext from './ThemeContext';
 
 // Matrial UI
 import TextField from '@material-ui/core/TextField';
@@ -12,12 +13,43 @@ import Button from '@material-ui/core/Button';
 import {MuiPickersUtilsProvider,KeyboardTimePicker} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles } from '@material-ui/core';
 
 // Icons
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 
+const useStyles = makeStyles({
+    LightTextfield:{
+        color: 'black',
+        backgroundColor:'white'
+    },
+    LightTextfieldLabel:{
+        backgroundColor:'transparent'
+    },
+    LightDialog: {
+        textAlign: 'center',
+        color: 'black',
+        backgroundColor: 'white',
+    },
+    DarkTextfield:{
+        color: 'white',
+        // backgroundColor:'black'
+    },
+    DarkTextfieldLabel:{
+        color:'white',
+        // backgroundColor:'black'
+    },
+    DarkDialog: {
+        textAlign: 'center',
+        color: 'white',
+        backgroundColor: '#303030',
+    }    
+});
 const EditPeriod = (props) => {
     const data = useContext(DataContext);   
+    const Theme =  useContext(ThemeContext);
+    const classes = useStyles();
+
     const subjects = data.Subject
 
     const start = {
@@ -61,6 +93,22 @@ const EditPeriod = (props) => {
         handleClose();
 
     }
+
+    let theme;
+    if(Theme==='🌕'){
+        theme = {
+            Dialog:classes.LightDialog,
+            TextField:classes.LightTextfield,
+            TextFieldLabel:classes.LightTextfieldLabel
+        }
+    }else{
+        theme = {
+            Dialog:classes.DarkDialog,
+            TextField:classes.DarkTextfield,
+            TextFieldLabel:classes.DarkTextfieldLabel
+        }
+    }
+
     return (
         <div className={'edit-period-btn'}>
             {props.edit===true &&
@@ -69,24 +117,24 @@ const EditPeriod = (props) => {
                 </IconButton>
             }
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                <DialogTitle className="add-dialog" onClose={handleClose}>Edit Subject</DialogTitle>
-                <DialogContent dividers className="add-dialog">
+                <DialogTitle className={theme.Dialog} onClose={handleClose}>Edit Subject</DialogTitle>
+                <DialogContent dividers className={theme.Dialog}>
                 <Autocomplete
                     onChange={(e,v)=> setId(v[0])} 
                     value={[Id,subjects[Id]]} 
                     options={Object.entries(subjects)} 
                     getOptionSelected={(option, value) => option[0] === value[0]}
                     getOptionLabel={(item) => item[1].name} 
-                    renderInput={(params) => <TextField {...params} color="secondary" label="Subject" InputProps={{...params.InputProps, style:{ color: '#fff'}}} InputLabelProps={{style: { color: '#fff' }}}
+                    renderInput={(params) => <TextField {...params} color="secondary" label="Subject" InputProps={{...params.InputProps, className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}}
                     fullWidth/>}/>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <KeyboardTimePicker value={StartTime} onChange={(time)=>setStartTime(time)} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" fullWidth  label="Start Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
-                        <KeyboardTimePicker value={EndTime} onChange={(time)=>setEndTime(time)} color="secondary" InputProps={{style: { color: '#fff' }}} InputLabelProps={{style: { color: '#fff' }}} margin="normal" fullWidth  label="End Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
+                        <KeyboardTimePicker value={StartTime} onChange={(time)=>setStartTime(time)} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="normal" fullWidth  label="Start Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
+                        <KeyboardTimePicker value={EndTime} onChange={(time)=>setEndTime(time)} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="normal" fullWidth  label="End Time" KeyboardButtonProps={{'aria-label': 'change time'}}/>
                     </MuiPickersUtilsProvider>
                 </DialogContent>
-                <DialogActions className="add-dialog">
-                    <Button onClick={handleClose} style={{color:'white'}}>Cancel</Button>
-                    <Button onClick={deletePeriod} color="secondary">Delete</Button>
+                <DialogActions className={theme.Dialog}>
+                    <Button onClick={handleClose} variant="outlined" color="secondary" >Cancel</Button>
+                    <Button onClick={deletePeriod} color="secondary" variant="outlined" >Delete</Button>
                     <Button onClick={editPeriod} variant="contained" color="secondary" >Save changes</Button>
                 </DialogActions>
             </Dialog>

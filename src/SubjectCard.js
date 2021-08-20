@@ -28,7 +28,7 @@ export default function SubjectCard(props) {
                 <label className="class-title">{subjects[props.item.id].name}</label>
             </div>
             {props.day===today && <ProgressBar item={props.item}/>}
-            <h6>⏰ {today}, {start} - {end}</h6>
+            <h6>⏰ {start} - {end}</h6>
             <h6>👨‍🏫 {subjects[props.item.id].faculty}</h6>
             <Button className={props.item===props.current?'button-current':'button'} onClick={()=>openInNewTab(subjects[props.item.id].meet)} variant="contained">Join</Button>
         </div>                             

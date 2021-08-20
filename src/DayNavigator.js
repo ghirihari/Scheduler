@@ -21,7 +21,7 @@ const DayNavigator = (props) => {
         <>
             <div className="next-buttons-container">
                 <IconButton size="small" className="next-buttons" onClick={()=>navigate('backward')}>
-                    <ChevronLeftIcon style={{color:'white'}}/>
+                    <ChevronLeftIcon className="icon"/>
                 </IconButton>
             </div>
             <div>
@@ -29,7 +29,7 @@ const DayNavigator = (props) => {
             </div>
             <div className="next-buttons-container">
                 <IconButton size="small" className="next-buttons" onClick={navigate}>
-                    <ChevronRightIcon style={{color:'white'}}/>
+                    <ChevronRightIcon className="icon"/>
                 </IconButton>
             </div>
         </>

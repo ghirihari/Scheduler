@@ -5,14 +5,14 @@ import Laptop from './assets/laptop.png'
 
 // Components
 import AddDialog from './AddDialog'
+import EditDialog from './EditDialog'
 
 // Matrial UI
 import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
-// Icons
-import EditDialog from './EditDialog'
 
-const Subjects = (props) => {
+
+  const Subjects = (props) => {
     const [Edit, setEdit] = useState(0);
   
     if(props.data){
@@ -26,7 +26,7 @@ const Subjects = (props) => {
                         <label className="class-title">{props.data[1].name}</label>
                     </div>
                     <h6>👨‍🏫 {props.data[1].faculty}</h6>
-                    <h6>🆔 {props.data[0]}</h6>
+                    {/* <h6>🆔 {props.data[0]}</h6> */}
                     <div className="btn-group">
                         <Button className={'button'} variant="contained">Meet</Button>
                     </div>

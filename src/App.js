@@ -63,9 +63,9 @@ export default class App extends React.Component {
   }
   timer = () => {
     var now = new Date();
-    if(now.getSeconds()===0){
+    // if(now.getSeconds()===0){
       this.setTime( (now.getHours()*60)+(now.getMinutes()) )
-    } 
+    // } 
   }
 
   setTime = (data) => this.setState({currentMinute:data})
