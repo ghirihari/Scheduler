@@ -37,9 +37,10 @@ const useStyles = makeStyles({
 export default function Drawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({left: false});
-  const [menu, setMenu] = React.useState('Subjects');
-  const [theme,setTheme] = React.useState('🌕')
-  const [themeClass,setThemeClass] = React.useState('theme-light')
+  const [menu, setMenu] = React.useState('Home');
+  const [theme,setTheme] = React.useState((localStorage.theme)?localStorage.theme:'🌑')
+  const [themeClass,setThemeClass] = React.useState((theme==='🌕')?'theme-light':'theme-dark')
+  localStorage.theme = theme;
 
   const toggleTheme = () => {
     if(theme==='🌑'){

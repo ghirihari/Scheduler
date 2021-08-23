@@ -13,7 +13,7 @@ const ProgressBar = (props) => {
     const data = useContext(DataContext);    
     const currentMinute = data.CurrentMinute;
     const timer = data.Timer
-    const subject = data.Subject[props.item.id];
+    // const subject = data.Subject[props.item.id];
 
     let start = {hour: parseInt(props.item.time.start.substring(0, props.item.time.start.indexOf(':'))), minute: parseInt(props.item.time.start.substring(props.item.time.start.indexOf(':')+1,props.item.time.length))};
     let end = {hour: parseInt(props.item.time.end.substring(0, props.item.time.end.indexOf(':'))), minute: parseInt(props.item.time.end.substring(props.item.time.end.indexOf(':')+1,props.item.time.length))};
@@ -27,25 +27,25 @@ const ProgressBar = (props) => {
         return () => clearInterval(clock)
     })
 
-    function notify() {
-        if (Notification.permission !== 'granted')
-         Notification.requestPermission();
-        else {
-         var notification = new Notification(subject.name, {
-        //   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-          body: subject.faculty,
-         });
-         notification.onclick = function() {
-          window.open(subject.meet);
-         };
-        }
-    }
+    // function notify() {
+    //     if (Notification.permission !== 'granted')
+    //      Notification.requestPermission();
+    //     else {
+    //      var notification = new Notification(subject.name, {
+    //     //   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+    //       body: subject.faculty,
+    //      });
+    //      notification.onclick = function() {
+    //       window.open(subject.meet);
+    //      };
+    //     }
+    // }
 
     if(currentMinute>endMinute){
         return <div><h6>💯 Completed</h6></div>;
     }else if(currentMinute<startMinute){
         if(startMinute-currentMinute===1){
-            notify()
+            // notify()
         }
         return <div><h6>⏳ Starts in {MinuteToHours(startMinute-currentMinute)}</h6></div>
     }

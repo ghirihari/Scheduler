@@ -57,6 +57,9 @@ export default class App extends React.Component {
       {day:'Wednesday',period:[{no:1,id:'15MSSE27', time:{start:'9:00',end:'9:50'}},{no:2,id:'15MSS91', time:{start:'9:55',end:'10:45'}},{no:3,id:'15MSSL08', time:{start:'11:00',end:'12:45'}}, {no:4,id:'15MSSL15', time:{start:'14:00',end:'16:45'}}] },
       {day:'Thursday',period:[{no:1,id:'15MSSE01', time:{start:'9:00',end:'10:45'}},{no:2,id:'15MSSL15', time:{start:'11:00',end:'12:45'}}, {no:3,id:'0',time:{start:'14:00',end:'16:45'}}] },
       {day:'Friday',period:[{no:1,id:'15MSSE38', time:{start:'9:00',end:'10:45'}},{no:2,id:'15MSS93', time:{start:'11:00',end:'12:45'}},{no:3,id:'15MSS92', time:{start:'14:00',end:'15:45'}},{no:4,id:'2',time:{start:'15:55',end:'16:45'}}] }, 
+      {day:'Saturday',period:[]}, 
+      {day:'Sunday',period:[]}, 
+    
     ]
     const dataa = {Day:_days, Subject:_subjects, Schedule:_schedule}
     localStorage.data = JSON.stringify(dataa)

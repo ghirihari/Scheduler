@@ -218,7 +218,7 @@ body{
   }
   .card-1{
     margin: 10px;
-    min-height: 300px;
+    /* min-height: 300px; */
   }
   .card-period{
     margin: 10px;
