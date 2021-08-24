@@ -12,7 +12,7 @@ export default function SnackBar(props) {
     if(props.message.text){
         return (
             <div key={props.message}>
-                <Snackbar open={props.open} autoHideDuration={3000} onClose={()=>props.show(false)}>
+                <Snackbar anchorOrigin={{ vertical:'top', horizontal:'center' }} open={props.open} autoHideDuration={3000} onClose={()=>props.show(false)}>
                     <Alert onClose={()=>props.show(false)} severity={props.message.type}>
                         {props.message.text}
                     </Alert>

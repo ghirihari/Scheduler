@@ -6,7 +6,13 @@ import Laptop from './assets/laptop.png'
 import ProgressBar from './ProgressBar';
 
 const openInNewTab = (url) => {
-    const newWindow = window.open(url+'?authuser='+localStorage.user, '_blank', 'noopener,noreferrer')
+    let newWindow;
+    if(localStorage.user){
+        newWindow = window.open(url+'?authuser='+localStorage.user, '_blank', 'noopener,noreferrer')
+    }else{
+        newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    }
+
     if (newWindow) newWindow.opener = null
 }
 
@@ -20,7 +26,6 @@ export default function SubjectCard(props) {
     let end = parseInt(props.item.time.end.substring(0, props.item.time.end.indexOf(':')))%12+props.item.time.end.substring(props.item.time.end.indexOf(':'),props.item.time.end.length)
     
     const today = days[(new Date().getDay())-1];
-   
     return(
         <div className={props.item===props.current?'card-1 nowCard':'card-1'} key={props.item.id}>
             <div style={{textAlign:"center"}}><img alt={titleIcon} src={titleIcon} style={{width:'50px'}}/></div>

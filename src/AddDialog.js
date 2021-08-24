@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext, useEffect} from 'react'
 import DataContext from './DataContext';
 import ThemeContext from './ThemeContext';
 
@@ -47,14 +47,15 @@ const useStyles = makeStyles({
 });
 
 const AddDialog = (props) => {
+    const data = useContext(DataContext);    
+
     const [open, setOpen] = useState(false);
     const [Name, setName] = useState('')
-    const [Id, setId] = useState(props.length)
+    const [Id, setId] = useState(Object.entries(data.Subject).length+1)
     const [Faculty, setFaculty] = useState('')
     const [Link, setLink] = useState('')
     const [Type, setType] = useState('class')
     
-    const data = useContext(DataContext);    
     const Theme = useContext(ThemeContext);       
     const classes = useStyles();
 
@@ -65,10 +66,19 @@ const AddDialog = (props) => {
       setOpen(false);
     };
 
+    const reset = () => {
+        setName('');
+        setId(props.length);
+        setFaculty('');
+        setLink('');
+        setType('class');
+    }
+
     const addSub = () => {
         setOpen(false);
         data.appendSubjects(Id,Name,Faculty,Link,Type);  
         data.setMessage('info','Subject Added')
+        reset();
     }  
 
     let theme,plus;
@@ -87,6 +97,10 @@ const AddDialog = (props) => {
             TextFieldLabel:classes.DarkTextfieldLabel
         }
     }
+
+    useEffect(() => {
+        setId(props.length)
+    },[props.length])    
 
     return (
         <div className={'add-card'}>
