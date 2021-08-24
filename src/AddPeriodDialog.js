@@ -52,7 +52,7 @@ const AddPeriodDialog = (props) => {
     const [Id, setId] = useState('')
     const [StartTime, setStartTime] = useState(date)
     const [EndTime, setEndTime] = useState(date)
-        
+
     const data = useContext(DataContext);    
     const Theme = useContext(ThemeContext);
     const classes = useStyles();
@@ -93,12 +93,13 @@ const AddPeriodDialog = (props) => {
         const old = JSON.parse(JSON.stringify(data.Schedule))
         old[props.day].period.push({no:old[props.day].period.length+1, id:Id,time:{start:startStr,end:endStr}})
         data.setSchedule(old)
-
         setOpen(false);
+        data.setMessage('info','Period Added')
     }
 
     return (
         <div className={'card-period'} key={'Add'}>
+
             <div className="title-container">
                 <IconButton onClick={handleClickOpen}>
                     <AddIcon style={{color:plus}} fontSize="large"/>

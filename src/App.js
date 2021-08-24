@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css'
 import Drawer from './Drawer'
 import DataContext from './DataContext'
+import SnackBar from './Snackbar';
 
 export default class App extends React.Component {
   constructor(){
@@ -14,6 +15,8 @@ export default class App extends React.Component {
       day : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday'],
       subjects : [],
       schedule : [],
+      message: {type:'',text:''},
+      messageShow: false
     }
 
     if (!Notification) {
@@ -36,6 +39,7 @@ export default class App extends React.Component {
   componentDidMount = () => {
     this.reloadData();
   }
+
   resetLocalData = () => {
     const _days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday']
     const _subjects = {
@@ -76,6 +80,19 @@ export default class App extends React.Component {
   setSubjects = (data) => {
     this.setState({subjects:data})
   }
+
+  setMessage = (type,text) => {
+    console.log(text)
+    this.setState({
+      message:{
+        type:type,
+        text:text,
+      },
+      messageShow:true
+    })
+  }
+
+  setMessageShow = (value) => {this.setState({messageShow:false})}  
 
   appendSubjects = (Id,Name,Faculty,Link,Type) => {
     this.setState(prevState => ({
@@ -127,11 +144,13 @@ export default class App extends React.Component {
       setSubjects:this.setSubjects, 
       setSchedule:this.setSchedule,
       Timer:this.timer,
-      reloadData:this.reloadData
+      reloadData:this.reloadData,
+      setMessage:this.setMessage,
     }
 
     return (
       <DataContext.Provider value={data}>
+        <SnackBar message={this.state.message} open={this.state.messageShow} show={()=>this.setMessageShow()}/>
         <Drawer/>
       </DataContext.Provider>
     );

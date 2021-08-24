@@ -1,7 +1,7 @@
 import React, {useState,useContext, useEffect} from 'react'
 import SubjectCard from './SubjectCard';
 import DayNavigator from './DayNavigator';
-import DataContext from './DataContext'
+import DataContext from './DataContext';
 
 // Icons
 // import Book from './assets/books.png'

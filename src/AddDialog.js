@@ -68,6 +68,7 @@ const AddDialog = (props) => {
     const addSub = () => {
         setOpen(false);
         data.appendSubjects(Id,Name,Faculty,Link,Type);  
+        data.setMessage('info','Subject Added')
     }  
 
     let theme,plus;

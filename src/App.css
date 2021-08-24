@@ -28,6 +28,7 @@ body{
 }
 
 .settings-tab{
+  
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -48,6 +49,7 @@ body{
   color: var(--text-color) !important;
 }
 .title-bar{
+  ;
   background-color: var(--title-color) !important;
   color: var(--text-color) !important;
 }
@@ -123,6 +125,7 @@ body{
 }
 
 .day-label{
+  
   min-width: 250px;
   background-color: var(--card-color);
   color:var(--text-color);
@@ -133,6 +136,7 @@ body{
 
 .now-container{
   background-color: var(--bg-color);
+  
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -278,6 +282,7 @@ body{
 
 .card-1{
   background-color: var(--card-color);
+  
   color:var(--text-color);
   display: flex;
   flex-direction: column;

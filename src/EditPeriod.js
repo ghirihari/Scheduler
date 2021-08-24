@@ -84,6 +84,7 @@ const EditPeriod = (props) => {
         old[props.day].period.push({no:old[props.day].period.length+1,id:Id,time:{start:start,end:end}})
         data.setSchedule(old)
         handleClose();
+        data.setMessage('info','Period Modified')
     }
 
     const deletePeriod = () => {
@@ -91,7 +92,7 @@ const EditPeriod = (props) => {
         old[props.day].period = old[props.day].period.filter(item=>item.no!==Number)
         data.setSchedule(old)
         handleClose();
-
+        data.setMessage('error','Period Deleted')
     }
 
     let theme;

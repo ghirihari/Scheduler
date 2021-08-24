@@ -71,6 +71,7 @@ const EditDialog = (props) => {
     const addSub = () => {
         setOpen(false);
         data.appendSubjects(Id,Name,Faculty,Link,Type);  
+        data.setMessage('info','Subject Modified')
     }  
 
     const removeFromSchedule = (Id) => {
@@ -88,6 +89,7 @@ const EditDialog = (props) => {
         const subs = {...data.Subject};
         delete subs[Id]
         data.setSubjects(subs);  
+        data.setMessage('error','Subject Deleted')
     }
 
     let theme;
