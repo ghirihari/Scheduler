@@ -268,6 +268,7 @@ body{
 }
 
 .card-period{
+  text-transform: capitalize;
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
@@ -282,7 +283,7 @@ body{
 
 .card-1{
   background-color: var(--card-color);
-  
+  text-transform: capitalize;
   color:var(--text-color);
   display: flex;
   flex-direction: column;
@@ -323,6 +324,7 @@ body{
 }
 
 .add-card{
+  text-transform: capitalize;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -452,3 +454,4 @@ td,th{
 tr:hover{
   background-color: #303030;
 }
+

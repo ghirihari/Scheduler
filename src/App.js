@@ -14,7 +14,15 @@ export default class App extends React.Component {
       currentMinute : (thedate.getHours()*60)+(thedate.getMinutes()),
       day : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday','Sunday'],
       subjects : [],
-      schedule : [],
+      schedule : [
+        {day:'Monday',period:[]},
+        {day:'Tuesday',period:[]},
+        {day:'Wednesday',period:[]},
+        {day:'Thursday',period:[]},
+        {day:'Friday',period:[]},
+        {day:'Saturday',period:[]},
+        {day:'Sunday',period:[]},
+      ],
       message: {type:'',text:''},
       messageShow: false
     }
@@ -95,6 +103,7 @@ export default class App extends React.Component {
   setMessageShow = (value) => {this.setState({messageShow:false})}  
 
   appendSubjects = (Id,Name,Faculty,Link,Type) => {
+    console.log("Append")
     this.setState(prevState => ({
         subjects:{...prevState.subjects,[Id]:{name:Name,faculty:Faculty,meet:Link,type:Type}}
       })
@@ -128,7 +137,15 @@ export default class App extends React.Component {
   componentDidUpdate = (prevProps, prevState) =>{
     if(prevState.subjects !== this.state.subjects || prevState.schedule !== this.state.schedule){
       // console.log('data updated')   
-      localStorage.data = JSON.stringify({Day:this.state.day,Subject:this.state.subjects,Schedule:this.state.schedule})
+      localStorage.data = JSON.stringify({Day:this.state.day,Subject:this.state.subjects,Schedule:[
+        {day:'Monday',period:[]},
+        {day:'Tuesday',period:[]},
+        {day:'Wednesday',period:[]},
+        {day:'Thursday',period:[]},
+        {day:'Friday',period:[]},
+        {day:'Saturday',period:[]},
+        {day:'Sunday',period:[]},
+      ]})
     }else{
     }
   }

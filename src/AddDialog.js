@@ -103,29 +103,31 @@ const AddDialog = (props) => {
     },[props.length])    
 
     return (
-        <div className={'add-card'}>
-            <div className={'subject-card'} style={{alignItems:'center'}}>
-                <IconButton onClick={handleClickOpen}>
-                    <AddIcon style={{color:plus}} fontSize="large"/>
-                </IconButton>
-                <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                    <DialogTitle className={theme.Dialog} onClose={handleClose}>Add Subject</DialogTitle>
-                    <DialogContent dividers className={theme.Dialog}>
-                        <RadioGroup row name="position" defaultValue="top" value={Type} onChange={(e)=>setType(e.target.value)}>
-                            <FormControlLabel className={theme.Textfield} value="class" control={<Radio color="secondary"/>} label="Class" />
-                            <FormControlLabel className={theme.Textfield} value="lab" control={<Radio color="secondary" />} label="Lab" />
-                        </RadioGroup>
-                        <TextField variant="filled" value={Name} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Subject Name" fullWidth onChange={(e)=>setName(e.target.value)} />
-                        <TextField variant="filled" value={Id} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Subject ID" fullWidth onChange={(e)=>setId(e.target.value)}/>
-                        <TextField variant="filled" value={Faculty} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Faculty" fullWidth onChange={(e)=>setFaculty(e.target.value)}/>
-                        <TextField variant="filled" value={Link} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Meet Link" fullWidth onChange={(e)=>setLink(e.target.value)}/>
-                    </DialogContent>
-                    <DialogActions className={theme.Dialog}>
-                        <Button onClick={handleClose} variant="outlined" color="secondary">Cancel</Button>
-                        <Button onClick={addSub} variant="contained" color="secondary">Save changes</Button>
-                    </DialogActions>
-                </Dialog>
+        <div>
+            <div className={'add-card'} onClick={handleClickOpen}>
+                <div className={'subject-card'} style={{alignItems:'center'}}>
+                    <IconButton>
+                        <AddIcon style={{color:plus}} fontSize="large"/>
+                    </IconButton>
+                </div>
             </div>
+            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                <DialogTitle className={theme.Dialog} onClose={handleClose}>Add Subject</DialogTitle>
+                <DialogContent dividers className={theme.Dialog}>
+                    <RadioGroup row name="position" defaultValue="top" value={Type} onChange={(e)=>setType(e.target.value)}>
+                        <FormControlLabel className={theme.Textfield} value="class" control={<Radio color="secondary"/>} label="Class" />
+                        <FormControlLabel className={theme.Textfield} value="lab" control={<Radio color="secondary" />} label="Lab" />
+                    </RadioGroup>
+                    <TextField variant="filled" value={Name} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Subject Name" fullWidth onChange={(e)=>setName(e.target.value)} />
+                    <TextField variant="filled" value={Id} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Subject ID" fullWidth onChange={(e)=>setId(e.target.value)}/>
+                    <TextField variant="filled" value={Faculty} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Faculty" fullWidth onChange={(e)=>setFaculty(e.target.value)}/>
+                    <TextField variant="filled" value={Link} color="secondary" InputProps={{className:theme.TextField}} InputLabelProps={{className:theme.TextFieldLabel}} margin="dense" label="Meet Link" fullWidth onChange={(e)=>setLink(e.target.value)}/>
+                </DialogContent>
+                <DialogActions className={theme.Dialog}>
+                    <Button onClick={handleClose} variant="outlined" color="secondary">Cancel</Button>
+                    <Button onClick={addSub} variant="contained" color="secondary">Save changes</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 }
