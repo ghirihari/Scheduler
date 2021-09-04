@@ -137,15 +137,7 @@ export default class App extends React.Component {
   componentDidUpdate = (prevProps, prevState) =>{
     if(prevState.subjects !== this.state.subjects || prevState.schedule !== this.state.schedule){
       // console.log('data updated')   
-      localStorage.data = JSON.stringify({Day:this.state.day,Subject:this.state.subjects,Schedule:[
-        {day:'Monday',period:[]},
-        {day:'Tuesday',period:[]},
-        {day:'Wednesday',period:[]},
-        {day:'Thursday',period:[]},
-        {day:'Friday',period:[]},
-        {day:'Saturday',period:[]},
-        {day:'Sunday',period:[]},
-      ]})
+      localStorage.data = JSON.stringify({Day:this.state.day,Subject:this.state.subjects,Schedule:this.state.schedule})
     }else{
     }
   }
