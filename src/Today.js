@@ -2,7 +2,6 @@ import React, {useState,useContext, useEffect} from 'react'
 import SubjectCard from './SubjectCard';
 import DayNavigator from './DayNavigator';
 import DataContext from './DataContext';
-import Button from '@material-ui/core/Button';
 
 // Icons
 // import Book from './assets/books.png'
@@ -76,9 +75,8 @@ const Now = () => {
                         }
                         else{
                             return(
-                                <div className="card-1" key={item.day}>
-                                    <img style={{marginTop:'-65px'}}alt="dog" src="https://emojipedia-us.s3.amazonaws.com:443/source/skype/289/ewe_1f411.png"></img>
-                                    <Button className='button' variant="contained">No Class Today</Button>
+                                <div key={item.day}>
+                                    <label class="noClass title">No Classes🤪</label>
                                 </div>
                             )
                         }

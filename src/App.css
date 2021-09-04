@@ -459,3 +459,14 @@ tr:hover{
   background-color: #303030;
 }
 
+
+
+
+.noClass {
+  background: var(--card-color);
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  color: white;            
+  border-radius: 10px;
+ }
