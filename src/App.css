@@ -49,7 +49,6 @@ body{
   color: var(--text-color) !important;
 }
 .title-bar{
-  ;
   background-color: var(--title-color) !important;
   color: var(--text-color) !important;
 }
@@ -293,6 +292,7 @@ body{
   height: auto;
   border-radius: 20px;
   min-width: 250px;
+  min-height: 285px;
 }
 
 .card-1 .button{
@@ -419,7 +419,11 @@ td,th{
 }
 
 .bar{
-  margin: 10px 5px;
+  margin: 10px 5px 0px 5px;
+}
+
+.bar .ends{
+  margin-top: .5rem;
 }
 
 .card{
@@ -454,7 +458,4 @@ td,th{
 tr:hover{
   background-color: #303030;
 }
-
-
-/* Dog */
 

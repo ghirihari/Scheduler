@@ -57,6 +57,7 @@ const ProgressBar = (props) => {
         return(
             <div className="bar" style={{textAlign:'left'}}>
                 <LinearProgress variant="determinate" color="secondary" value={progress} style={{height:'10px', borderRadius:'10px'}} />
+                <h6 className="ends">⏳ Ends in {MinuteToHours(currentMinute-startMinute)}</h6>
             </div>
         )
     } 
