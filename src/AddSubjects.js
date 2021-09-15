@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react'
 import DataContext from './DataContext'
 import Book from './assets/books.png'
 import Laptop from './assets/laptop.png'
+import Test from './assets/test.png'
 
 // Components
 import AddDialog from './AddDialog'
@@ -12,10 +13,19 @@ import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 
 
-  const Subjects = (props) => {
+const getIcon = (name) => {
+    switch(name){
+        case 'class':return Book;
+        case 'lab':return Laptop;
+        case 'test':return Test;
+        default: return Book;
+    }
+}
+
+const Subjects = (props) => {
     const [Edit, setEdit] = useState(0);
   
-    let titleIcon = props.data[1].type==="lab"?Laptop:Book;
+    let titleIcon = getIcon(props.data[1].type);
     return(
         <div className={'add-card'} onMouseOver={()=>setEdit(1)} onMouseLeave={()=>setEdit(0)}>
             <div className={'subject-card'}>

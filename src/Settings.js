@@ -16,15 +16,16 @@ const Settings = () => {
 
     const addData = () => {
         localStorage.data = Data;
+        data.setMessage('info','Data Added')
         data.reloadData()
     }
 
     const exportData = () => {
         navigator.clipboard.writeText(localStorage.data).then(function() {
-            console.log("clipboard successfully set")
+            data.setMessage('info','Data successfully exported')
           }, function() {
-            console.log("clipboard write failed")
-          });
+            data.setMessage('error','Export Failed')
+        });
     }
 
     return (
