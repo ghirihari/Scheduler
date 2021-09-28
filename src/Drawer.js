@@ -105,7 +105,9 @@ export default function Drawer() {
                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
                   <MenuIcon />
                 </IconButton>
-                <div className="title">⚡Ghost Of Uchiha⚡</div>
+                <div className="title">
+                  <a style={{color: 'inherit', textDecoration: 'none'}}href="https://peaceful-lichterman-99e9b5.netlify.app/">⚡Ghost Of Uchiha⚡</a>
+                  </div>
                 <IconButton style={{color:'white'}} onClick={toggleTheme}>{icon}</IconButton>
               </Toolbar>
             </AppBar>

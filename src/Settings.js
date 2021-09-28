@@ -22,7 +22,7 @@ const Settings = () => {
 
     const exportData = () => {
         navigator.clipboard.writeText(localStorage.data).then(function() {
-            data.setMessage('info','Data successfully exported')
+            data.setMessage('info','Data copied to clipboard')
           }, function() {
             data.setMessage('error','Export Failed')
         });
@@ -37,7 +37,7 @@ const Settings = () => {
                         <Button className='button-style' onClick={()=>addAuthUser()} variant="contained" style={{flexGrow:'1',margin:'10px'}}>Add</Button>
                     </div>
                     <div style={{display:'flex'}}>
-                        <TextField value={Data} onChange={(e)=>setData(e.target.value)} color="secondary" variant="filled" InputProps={{className:'textfield'}} InputLabelProps={{className:'textfield'}} margin="dense" label="Add Data" />
+                        <TextField value={Data} onChange={(e)=>setData(e.target.value)} color="secondary" variant="filled" InputProps={{className:'textfield'}} InputLabelProps={{className:'textfield'}} margin="dense" label="Add JSON Data" />
                         <Button className='button-style' onClick={()=>addData()} variant="contained"  style={{flexGrow:'1',margin:'10px'}} >Import</Button>
                     </div>
                     <div style={{display:'flex'}}>

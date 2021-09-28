@@ -78,11 +78,17 @@ const EditPeriod = (props) => {
     const editPeriod = () => {
         let start = StartTime.getHours()+":"+StartTime.getMinutes();
         let end = EndTime.getHours()+":"+EndTime.getMinutes();
+        const newSchedule = JSON.parse(JSON.stringify(data.Schedule))
 
-        const old = JSON.parse(JSON.stringify(data.Schedule))
-        old[props.day].period = old[props.day].period.filter(item=>item.no!==Number)
-        old[props.day].period.push({no:old[props.day].period.length+1,id:Id,time:{start:start,end:end}})
-        data.setSchedule(old)
+        newSchedule[props.day].period[props.item.no-1].id = Id
+        newSchedule[props.day].period[props.item.no-1].time.start = start;
+        newSchedule[props.day].period[props.item.no-1].time.end = end;
+        // console.log(data.Schedule[props.day],newSchedule[props.day])
+        // const old = JSON.parse(JSON.stringify(data.Schedule))
+        // old[props.day].period = old[props.day].period.filter(item=>item.no!==Number)
+        // old[props.day].period.push({no:old[props.day].period.length+1,id:Id,time:{start:start,end:end}})
+
+        data.setSchedule(newSchedule)
         handleClose();
         data.setMessage('info','Period Modified')
     }

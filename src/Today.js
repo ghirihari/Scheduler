@@ -66,7 +66,7 @@ const Now = () => {
             <div className="now-tab">
                 {schedule.map(item=>{
                     if(item.day===selectedDay){
-                        console.log(item.period.length)
+                        // console.log(item.period.length)
                         if(item.period.length>=1)
                         {
                             return item.period.map(item=>{
